@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Стена комментариев</title>{% endblock %}
+
+
+{% block body %}
+    <h1>Комментарии</h1>
+
+    <h3>Добавить комментарий</h3>
+
+    {% if current_user.is_authenticated %}
+        <form method="post" id="comment-form" action="{{ url_for('comments') }}">
+            {{ form.hidden_tag() }}
+            <textarea name="text" class="comment-textarea" rows="4" placeholder="Ваш комментарий...">{% if form.text.data is none %}{% else %}{{ form.text.data }}{% endif %}</textarea>
+            {% if form.text.errors %}
+                <div class="form-error">
+                    {% for error in form.text.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <br>
+            <button type="submit" class="btn">Отправить</button>
+        </form>
+    {% else %}
+        <p>Нужно <a href="{{ url_for('login') }}">войти</a> или <a href="{{ url_for('register') }}">зарегистрироваться</a>!</p>
+    {% endif %}
+
+    <h2>Стена комментариев</h2>
+
+    {% for comment in comments %}
+        <div class="comment-block">
+            <b>{{ comment.user.nickname }}</b>
+            <span style="color:gray">{{ comment.created_at.strftime('%d.%m.%Y %H:%M') }}</span>
+            <p class="comment-text">{{ comment.text }}</p>
+
+            {% if current_user.is_authenticated and (comment.user.nickname == current_user.nickname or current_user.nickname == "admin") %}
+                <form action="{{ url_for('delete_comment', comment_id=comment.id) }}" method="post" style="display:inline;">
+                    {{ form.hidden_tag() }}
+                    <button type="button" class="btn btn-warning btn-sm" onclick="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                        Удалить
+                    </button>
+                    <button type="submit" class="btn btn-danger btn-sm delete-btn" style="display:none;">
+                        Точно удалить
+                    </button>
+                </form>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>Пока нет комментариев.</p>
+    {% endfor %}
+
+{% endblock %}

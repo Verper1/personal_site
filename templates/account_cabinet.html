@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Личный кабинет</title>{% endblock %}
+
+
+{% block body %}
+    <h1>Личный кабинет</h1>
+    <h4>Тут вы можете поменять свой пароль и никнейм</h4>
+    <br>
+    <form action="" method="post" class="form-centered">
+        {{ form.csrf_token() }}
+        {% for field in form if field.name != "csrf_token" %}
+            <div class="form-group">
+                {{ field.label() if field.name != "submit" }}
+                {{ field }}
+                {% for error in field.errors %}
+                    <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </form>
+    <br>
+    <div style="text-align:center; margin-top: 1em;">
+        <a id="logout_cabinet_btn" class="logout-btn" href="{{ url_for('logout') }}">Выйти</a>
+    </div>
+    <br>
+{% endblock %}

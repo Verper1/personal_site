@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Главная</title>{% endblock %}
+
+{% block body %}
+<main>
+    <h2>Всех приветствую на своём сайте-визитке!</h2>
+    <section class="about-block">
+        <p>Меня зовут Вячеслав и я занимаюсь разработкой сайтов на Python на различных фреймворках (Flask, FastAPI и Django). Также, я занимаюсь разработкой телеграмм ботов (aiogram). Ещё пишу разные скрипты под определённые нужды.</p>
+        <p>Я сам научился программировать и продолжаю совершенствовать свои навыки и по сей день. Общий стаж программирования – более 1 года.</p>
+        <p>Являюсь по совместительству одним из организаторов Английского разговорного клуба SKoP и менеджером IT сообщества SKoP.</p>
+        <p>Часто хожу на митапы. Меня можно встретить на таких митапах, как Moscow Python Meetup, Python Breakfast и другие.</p>
+    </section>
+    <section class="stack-block">
+        <h2>Технологический стек</h2>
+        <ul class="stack-list">
+            <li><img src="/static/images/python_icon.png" alt="Python" class="stack-icon"> Языки программирования: Python</li>
+            <li>
+                <img src="/static/images/flask_image.png" alt="Flask" class="stack-icon">
+                <img src="/static/images/bot_image.png" alt="Telegram Bot" class="stack-icon">
+                <img src="/static/images/django.png" alt="Django" class="stack-icon">
+                <img src="/static/images/api.png" alt="API" class="stack-icon"> Фреймворки: Flask, Django, Aiogram3, FastAPI
+            </li>
+            <li>
+                <img src="/static/images/postgres_image.png" alt="PostgreSQL" class="stack-icon">
+                <img src="/static/images/sql_image.png" alt="SQLite" class="stack-icon"> Базы данных: PostgreSQL, SQLite
+            </li>
+            <li><img src="/static/images/SQLAlchemy.png" alt="SQLAlchemy" class="stack-icon"> ORM: SQLAlchemy</li>
+            <li><img src="/static/images/docker.png" alt="Docker" class="stack-icon"> Контейнеризация: Docker</li>
+            <li><img src="/static/images/network_image.png" alt="Network" class="stack-icon"><span>Сетевые технологии: работа с маршрутизаторами и коммутаторами, понимание основ построения сетей.</span></li>
+            <li>
+                <img src="/static/images/git_image.png" alt="Git" class="stack-icon">
+                <img src="/static/images/linux.png" alt="Linux" class="stack-icon"> Другие инструменты: Git, Linux
+            </li>
+        </ul>
+    </section>
+    <section class="info-block">
+        <p>На этом сайте есть страница с комментариями. Если вы со мной работали когда-то в сфере IT, то прошу оставить свой отзыв о моей работе. Чтобы оставить отзыв нужно <a href="{{ url_for('register') }}">зарегистрироваться</a> или <a href="{{ url_for('login') }}">войти</a> в аккаунт на сайте.<br>
+            Примеры моих работ можете увидеть на <a href="https://github.com/Verper1">GitHub.</a><br>
+        Если хотите со мной связаться, то наберите мне в <a href="https://t.me/Slava478">телеграмм</a> сообщение с ссылкой на этот сайт.
+    </section>
+    <h2 class="good-luck">Всем удачи!</h2>
+    <div class="icons-row">
+        <img src="/static/images/python_icon.png" alt="Python" class="stack-icon">
+        <img src="/static/images/flask_image.png" alt="Flask" class="stack-icon">
+        <img src="/static/images/django.png" alt="Django" class="stack-icon">
+        <img src="/static/images/api.png" alt="API" class="stack-icon">
+        <img src="/static/images/bot_image.png" alt="Telegram Bot" class="stack-icon">
+        <img src="/static/images/postgres_image.png" alt="PostgreSQL" class="stack-icon">
+        <img src="/static/images/sql_image.png" alt="SQLite" class="stack-icon">
+        <img src="/static/images/SQLAlchemy.png" alt="SQLAlchemy" class="stack-icon">
+        <img src="/static/images/git_image.png" alt="Git" class="stack-icon">
+        <img src="/static/images/network_image.png" alt="Network" class="stack-icon">
+        <img src="/static/images/docker.png" alt="Docker" class="stack-icon">
+        <img src="/static/images/linux.png" alt="Linux" class="stack-icon">
+    </div>
+</main>
+{% endblock %}

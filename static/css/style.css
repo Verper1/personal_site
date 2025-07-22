@@ -1,0 +1,496 @@
+/*
+ * Globals
+ */
+
+
+/* Custom default button */
+.btn-light,
+.btn-light:hover,
+.btn-light:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+
+/*
+ * Base structure
+ */
+
+body {
+  background: #181a1b;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 70px;
+  height: 100%;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+}
+
+.cover-container {
+  max-width: 50em;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 70 2em 0 2em; /* исправлено с единицами */
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 700px; /* достаточно высоты для прокрутки */
+  box-sizing: border-box;
+}
+
+
+/*
+ * Header
+ */
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 50%;                /* центрируем относительно левой границы */
+  transform: translateX(-50%); /* сдвигаем влево на 50% ширины для центрирования */
+  max-width: 50em;          /* та же ширина, что и у cover-container */
+  width: 100%;              /* чтобы использовать max-width */
+  padding: 10px 2em;        /* совпадает с padding у cover-container */
+  background: #23272b;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 8px #0005;
+  border-radius: 14px;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 2em 0.5em 2em;
+    min-height: 56px;
+    background: none;
+    box-shadow: none;
+}
+.site-title {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 700;
+    text-align: left;
+}
+
+.about-block {
+    background: #181a1b;
+    border: 2px solid #444a50;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #0002;
+    color: #e0e0e0;
+    margin-bottom: 3em;
+    margin-top: 0.5em;
+    padding: 2em 2.5em;
+    text-align: center;
+    font-size: 1.15em;
+    max-width: 100%;
+}
+
+.stack-block {
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+    background: #23272b;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #0002;
+    padding: 2em 2.5em;
+    border: 2px solid #444a50;
+}
+
+footer {
+    background: #181a1b;
+    border-top: 1px solid #333;
+    box-shadow: none;
+    padding: 1em 0 0.5em 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    border-radius: 0;
+    margin-top: 2.5em;
+}
+
+.about-block, .info-block, .stack-block {
+    margin-bottom: 2em;
+    padding: 1.5em 2em;
+    text-align: center;
+    line-height: 1.7;
+    font-size: 1.15em;
+    background: #23272b;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #0002;
+}
+
+.stack-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2em 0;
+}
+.stack-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    font-size: 1.13em;
+    background: #23272b;
+    border-radius: 8px;
+    padding: 0.7em 1.2em;
+    box-shadow: 0 2px 8px #0002;
+    min-height: 40px;
+    text-align: left;
+}
+.stack-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 0.7em;
+    background: #fff !important;
+    border-radius: 6px;
+    padding: 3px;
+    box-shadow: 0 1px 4px #0005;
+    object-fit: contain;
+}
+.stack-list li.orm .stack-icon,
+.stack-list li.docker .stack-icon {
+    background: #fff !important;
+    box-shadow: 0 1px 4px #0005;
+}
+.stack-list li.network {
+    align-items: center;
+}
+.stack-list li.network span {
+    margin-top: 0;
+}
+
+.icons-row {
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+h1, h2, h3, h4 {
+    margin-top: 1.2em;
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+}
+
+p {
+    margin-bottom: 1em;
+    margin-top: 0.7em;
+}
+
+.nav-masthead {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin: 0;
+    float: none;
+}
+
+.nav-masthead .nav-link {
+  color: #b0b0b0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-bottom 0.2s;
+  font-size: 1.1em;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  color: #fff;
+  border-bottom: 2px solid #00bfff;
+  background: #23272b;
+}
+
+.nav-masthead .nav-link.active,
+.nav-masthead .nav-link[aria-current="page"] {
+  color: #fff;
+  border-bottom: 2px solid #00bfff;
+  background: #23272b;
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size:3.5rem
+    }
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: #0000001a;
+    border: solid rgba(0,0,0,.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em #0000001a,inset 0 .125em .5em #00000026
+}
+
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch
+}
+
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8
+}
+
+.bd-mode-toggle {
+    z-index: 1500
+}
+
+.bd-mode-toggle .bi {
+    width: 1em;
+    height: 1em
+}
+
+.bd-mode-toggle .dropdown-menu .active .bi {
+    display: block!important
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease; /* 1 секунда — можно изменить */
+}
+
+/* .nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+} */
+
+.comment-block {
+    background: #23272b;
+    border: 2px solid #00bfff;
+    border-radius: 10px;
+    margin: 1.2em 0;
+    padding: 1em 1.2em;
+    box-shadow: 0 2px 8px #0002;
+    text-align: left;
+}
+
+.comment-writer {
+    background: #23272b;
+    border: 2px solid #00bfff;
+    border-radius: 10px;
+    padding: 1em 1.2em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 8px #0002;
+}
+
+#comment-form input, #comment-form textarea {
+    background: #181a1b;
+    color: #e0e0e0;
+    border: 1px solid #00bfff;
+    border-radius: 6px;
+    padding: 0.5em;
+    width: 100%;
+}
+
+/* Анимация для всех ссылок, кроме .nav-link */
+a:not(.nav-link) {
+    color: #00bfff;
+    text-decoration: underline;
+    transition: color 0.2s, box-shadow 0.2s, background 0.2s;
+    border-radius: 6px;
+    padding: 2px 6px;
+}
+a:not(.nav-link):hover, a:not(.nav-link):focus {
+    color: #23272b;
+    background: #00bfff;
+    text-decoration: none;
+    box-shadow: 0 2px 16px #00bfff55;
+}
+
+#flash-messages {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    min-width: 320px;
+    max-width: 90vw;
+    box-shadow: 0 4px 24px #000a;
+    opacity: 0.98;
+    font-size: 1.1em;
+}
+
+.main-content {
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+}
+
+/* Кнопка "вверх" */
+#toTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1500;
+    background: #23272b;
+    color: #00bfff;
+    border: 2px solid #00bfff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0005;
+    transition: background 0.2s, color 0.2s;
+}
+#toTopBtn:hover {
+    background: #00bfff;
+    color: #23272b;
+}
+
+.comment-text {
+    margin: 0.7em 0 0.7em 0;
+    font-size: 1.08em;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.delete-btn {
+    margin-left: 1em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    padding: 0.2em 1.2em;
+    font-size: 1em;
+}
+
+/* Кнопки (кроме .nav-link) */
+#comment-form button, .btn, .btn-danger, .btn-sm, .delete-btn, input[type=submit], input[type=button] {
+    background: #23272b;
+    color: #00bfff;
+    border: 2px solid #00bfff;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 1px 8px #0003;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 0.5em 2em;
+    outline: none;
+}
+#comment-form button:hover, .btn:hover, .btn-danger:hover, .btn-sm:hover, .delete-btn:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #00bfff;
+    color: #23272b;
+    border: 2px solid #00bfff;
+    box-shadow: 0 2px 16px #00bfff55;
+}
+
+.form-group, .form-row, .form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.2em;
+}
+.form-group label, .form-row label, .form-section label {
+    margin-bottom: 0.5em;
+    font-weight: 500;
+    color: #b0b0b0;
+}
+.form-group input, .form-row input, .form-section input, .form-group textarea, .form-row textarea {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 0.2em;
+    font-size: 1.1em;
+}
+
+/* Для кнопки подтверждения/отправки */
+.form-group button, .form-row button, .form-section button {
+    margin-top: 1em;
+    align-self: flex-start;
+}
+
+/* Центрирование формы на странице */
+.form-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.comment-textarea {
+    width: 100%;
+    min-height: 80px;
+    max-width: 100%;
+    background: #181a1b;
+    color: #e0e0e0;
+    border: 2px solid #00bfff;
+    border-radius: 10px;
+    padding: 1em 1.2em;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 8px #0002;
+    transition: border 0.2s, box-shadow 0.2s;
+    resize: vertical;
+}
+.comment-textarea:focus {
+    border: 2px solid #00bfff;
+    box-shadow: 0 0 0 2px #00bfff55;
+    outline: none;
+}
+
+/* Стиль для .info-block */
+.info-block {
+    background: #181a1b;
+    border: 2px solid #444a50;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #0002;
+    color: #e0e0e0;
+    margin-bottom: 3em;
+    margin-top: 2.5em;
+    padding: 2em 2.5em;
+    text-align: center;
+    font-size: 1.15em;
+    max-width: 100%;
+}
